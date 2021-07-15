@@ -61,7 +61,7 @@ JSON是当前行业内使用最为广泛的数据传输格式之一，用于实�
 
 ***\*3.\*******\*4 模型采集数据\****
 
-![img](file:///C:\Users\PAULGR~1\AppData\Local\Temp\ksohtml21308\wps1.png) 
+![img](file:./图片/wps1.png) 
 
 ***\*用户界面设计\****
 
