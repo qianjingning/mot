@@ -60,7 +60,7 @@ JSON是当前行业内使用最为广泛的数据传输格式之一，用于实�
  
 
 ***\*3.\*******\*4 模型采集数据\****
-<img width="800" src=>
+<img width="800" src="https://github.com/qianjingning/mot/blob/main/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%201.png">
 
 ***\*用户界面设计\****
 
