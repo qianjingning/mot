@@ -1,3 +1,7 @@
+# 本文档已上传至github上开源（地址:https://github.com/qianjingning/mot)
+
+
+
 # 						***\*概要设计说明书\****
 
 **1.** ***\*引言\****
@@ -57,17 +61,11 @@ JSON是当前行业内使用最为广泛的数据传输格式之一，用于实�
 
 前端采用VUE模板，静态数据即为data（）域中所给定的数据，后端采用Python  Flask框架，静态数据即为所设置的本地变量。
 
- 
 
-***\*3.\*******\*4 模型采集数据\****
-<img width="800" src="https://github.com/qianjingning/mot/blob/343ec468111df948c70ce8e87447e6f86e0259fe/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%203.png">
-
-
-<img width="800" src="https://github.com/qianjingning/mot/blob/73d268d41f7ee925613e54955ebc03194e3b1d7f/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%201.png">
 
 ***\*用户界面设计\****
 
-![img](file:///./图片/图片 1.png) 
+<img src="https://github.com/qianjingning/mot/blob/df6c3d5bb8a2a6e6fe87816f2170ddcd441e8ede/%E5%9B%BE%E7%89%87/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202021-07-15%20103451.png"/>
 
  
 
@@ -75,7 +73,7 @@ JSON是当前行业内使用最为广泛的数据传输格式之一，用于实�
 
  
 
-![img](file:///./图片/图片 2.png) 
+<img src="https://github.com/qianjingning/mot/blob/df6c3d5bb8a2a6e6fe87816f2170ddcd441e8ede/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%202.png">
 
 界面最下方这两个区域分别是回显的帧处理视频以及回显的每帧数据结果。上传视频并手动刷新后即可分别看到经检测后的视频以及数据。
 
@@ -126,7 +124,7 @@ VUE中严格按照ES6代码规范，Flask中按照python代码的规范书写，
 
 如给出软件系统的结构图。
 
-![img](file:///./图片/C9F754DE-2CAD-44b6-B708-469DEB6407EB-1.png) 
+<img src="https://github.com/qianjingning/mot/blob/df6c3d5bb8a2a6e6fe87816f2170ddcd441e8ede/%E5%9B%BE%E7%89%87/C9F754DE-2CAD-44b6-B708-469DEB6407EB-1.png">
 
  
 
@@ -176,34 +174,29 @@ l App.py
 
 ①　submitParameters()& resetForm(formName)
 
-   ![img](file:///./图片/图片 1(1).png)
+ <img src="https://github.com/qianjingning/mot/blob/df6c3d5bb8a2a6e6fe87816f2170ddcd441e8ede/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%201(1).png">
 
 submitParameters（）函数被绑定在提交按钮上，即点击按钮出发此函数。本地变量data（）中给定义了formLabelAlign字典，里面分别设定了五个阈值，并且在用户设置阈值时可以在输入框中获取输入值，并将他们赋值给另外已设定好的阈值变量。而resetForm（formName）的目的是为了提交完成以后自动清除用户在输入框中输入的值以便下次输入。因此代码中才需要两个相同的阈值变量，一个接收，一个负责传值。而接收变量的值会在提交申请触发后被清除。
 
 ②　beforeUploadVideo()& uploadViedeoProcess()& handleVideoSuccess()
 
-![img](file:///./图片/图片 3.png) 
-
+ <img src="https://github.com/qianjingning/mot/blob/df6c3d5bb8a2a6e6fe87816f2170ddcd441e8ede/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%203.png">
 该三个函数名是VUE插件ElementUI中上传组件的自带响应函数，分别表示上传前所进行的操作，上传过程中所进行的操作以及上传成功后所进行的操作。上传前会调用beforeUploadVideo()函数进行对文件格式和大小的检测，如果不符合条件即会显示提示消息。file参数即为在前端界面所获取的上传视频对象。上传过程中会调用uploadViedeoProcess()函数控制上传进度条的进度，根据文件已上传的大小和文件大小的比值实时在前端显示进度。上传成功后会调用handleVideoSuccess()，首先将进度条置为100%，同时将上传状态置为成功，这样用户在界面上会看到显示绿色箭头。文件的上传操作访问地址已在标签中提前设置好，即为标签属性action所设置的地址值。此时后端Flask中对应的路由函数被调用，将视频上传保存后返回状态码resCode，handleVideoSuccess()判断状态码，若正确则将一开始用户提交的五个阈值封装为JSON数据通过get请求发送给对应后端的路由函数。
 
-![img](file:///./图片/图片 4.png) 
-
+<img src="https://github.com/qianjingning/mot/blob/df6c3d5bb8a2a6e6fe87816f2170ddcd441e8ede/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%204.png">
 (2) Flask	app.py
 
 ①　三个路由模板函数
 
-![img](file:///./图片/图片 5.png) 
+<img src="https://github.com/qianjingning/mot/blob/df6c3d5bb8a2a6e6fe87816f2170ddcd441e8ede/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%205.png">
 
 Index.html为前端VUE项目打包形成的主页面，后端Flask在python下创建了两个独立的HTML模板data.html,Frame.html分别用于作为输出结果显示和视频帧显示的界面。render_template方法即指定在对应的路由下渲染哪一个HTML文件。注意data（）路由函数渲染时多带了一个data参数，此为返回的每帧的输出结果，并可以一直获取数据而不是一次性。
 
 ②　def upload()& def directory()
 
- ![img](file:///./图片/图片 6.png)
+ <img src="https://github.com/qianjingning/mot/blob/df6c3d5bb8a2a6e6fe87816f2170ddcd441e8ede/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%206.png">
 
-
-
-![img](file:///./图片/图片 7.png)
-
+<img src="https://github.com/qianjingning/mot/blob/df6c3d5bb8a2a6e6fe87816f2170ddcd441e8ede/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%207.png">
 
 
 由上VUE函数介绍，这两个函数为前后端交互函数。由VUE发送上传视频请求到upload路由后，upload函数获取到视频文件，同属对其上传路径进行修改，为了保证每次上传的文件名唯一，选用了uuid组件对视频名进行随机匹配，同时将开始设置好的基本地址url（C://user/Videos）和文件名拼接组成新地址，视频格式统一改为MP4格式。保存文件后发送状态码给前端，由于前后端分离开发，端口不同，存在跨域交互数据。故发送需要CORS认证，即发送请求时加上请求头。directory则接收的是前端发送过来的用户输入的五个阈值，分别获取后保存在本地全局变量中，以供后面进行帧处理使用。
@@ -214,7 +207,7 @@ Index.html为前端VUE项目打包形成的主页面，后端Flask在python下�
 
 ④　def create_data_info() & main
 
-![img](file:///./图片/图片 10.png) 
+<img src="https://github.com/qianjingning/mot/blob/df6c3d5bb8a2a6e6fe87816f2170ddcd441e8ede/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%2010.png">
 
 create_data_info()函数作用即为获取输出结果，并持续向上述的data（）路由函数传递数据。main函数为程序主函数，设定运行端口并同时开启debug功能。
 
@@ -222,12 +215,13 @@ create_data_info()函数作用即为获取输出结果，并持续向上述的da
 
 ***\*2\*******\*.3程序逻辑\*******\*图\****：
 
-![img](file:///./图片/图片 14.png) 
+<img src="https://github.com/qianjingning/mot/blob/df6c3d5bb8a2a6e6fe87816f2170ddcd441e8ede/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%2014.png">
 
  
 
- 
+
 ## 目标追踪部分算法详细设计
+
 目标追踪算法分为两个部分，目标检测部分，追踪部分，前者使用yolov5实现，后者使用deepsort实现。其中yolov5使用的结构如下图：
 
 
@@ -238,26 +232,32 @@ deepsort中深度特征提取部分使用的结构如下图：
 yolov5检测部分由./detect.py和./model.py组成，model模块包含网络的定义，使用ONNXModel(paddle.nn.Layer)类实现，通过在yolov5的yolov5s6模型上进行微调得到的模型转换成onnx模型并使用x2paddle转换成paddlepaddle模型得到paddle模型的权重。在paddlepaddle中重现输入输出接口。方便起见，所有yolo相关代码防御flask的入口文件app.py中。
 
     class ONNXModel(paddle.nn.Layer)
-	    该类为模型结构定义，可用的方法有：
-	    
+        该类为模型结构定义，可用的方法有：
+
 
      - `model.set_dict(params）`
     
            input:通过paddle.load加载的模型权重
            output:true
-      
-    
-     - `model(source)`
-    
+
+
+​    
+​     - `model(source)`
+​    
+
     	    input:要进行检测的图像或者视频
     	    output:预测结果
 
   
+
+
 ---------
+
     class LoadImages()
         	该类为模型的输入类，可以为视频或者图片或者图片目录，实际使用中读入一张图片并所放缩到合适尺寸以及调用letterbox进行填充和通道变换。
-    
----------    
+
+---------
+
     fun letterbox(img, new_shape,stride,scaleup)
     	    该函数对图片进行缩放操作
     
@@ -267,9 +267,9 @@ yolov5检测部分由./detect.py和./model.py组成，model模块包含网络的
      - new_shape
      - stride
      - scaleup
-	
-	output:
-	
+    
+    output:
+
 
 	 - img
 	 - radio
@@ -279,56 +279,62 @@ yolov5检测部分由./detect.py和./model.py组成，model模块包含网络的
 ----------
 
     fun non_max_suppression(bboxes, scores, score_thresh, nms_thresh)
-		    非极大值抑制函数，通过给定的置信度阈值和iou阈值过滤多余的绑定箱
-	input:
-	
-	- bboxes
-	- scores
-	- score_thresh
-	- nms_thresh
+    	    非极大值抑制函数，通过给定的置信度阈值和iou阈值过滤多余的绑定箱
+    input:
+    
+    - bboxes
+    - scores
+    - score_thresh
+    - nms_thresh
+    
+    output:
+    - bboxes
+    - scores
 
-	output:
-	- bboxes
-	- scores
-	
 
 ----------
 
     fun plot_one_box(x, im)
     - 输入预测箱x以及图片im
     - 输出绘制了预测箱的图片
-    
-    
+
+
+​    
+
 ----------
 
-    fun box_iou_xyxy(box1, box2)
-        计算两个预测箱的iou大小，输入格式为xyxy.
-        
+    fun box_iou_xyxy(box1, box2)    计算两个预测箱的iou大小，输入格式为xyxy.
+
 ----------
-    fun scale_coords
-        用于将预测坐标映射回原图尺寸
-        
-    
-    
+
+    fun scale_coords    用于将预测坐标映射回原图尺寸
+
+
+​    
+​    
+
 ----------
+
 deepsort追踪部分位于deepsort子包，主要有特征提取的deep部分和匹配相关的sort部分，入口模块为deepsort,主要包含deepsort类：
 
     class DeepSort(object)
 
 
 -----------
+
 deep子包包含深度特征提取器，其模型文件位于model模块下。特征提取定义在feature_extractor模块下的Extractor类：
 
     class Extractor(object):
 
 --------
+
 特征提取网络定义在model模块下的Net类中。
 
-    class Net(nn.Module)
-    该模型以固定尺寸[1,2,640,640]作为输入。
+    class Net(nn.Module)该模型以固定尺寸[1,2,640,640]作为输入。
 
 
 -------------
+
 sort子包包含了跟踪器定义，跟踪器之间的级联匹配以及卡尔曼滤波算法。
 
 
@@ -467,7 +473,7 @@ l 运行时间：略大于视频时间（每帧处理需要时间，但时间可
  - id：每个人在视频中的唯一id,相同id表示同一个人。
  - num：视频中总的人物数量
  - conf：每个人的置信度大小
- 
+
 
 ***\*4\*******\*.4出错和恢复\****
 
